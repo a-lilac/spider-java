@@ -1,0 +1,23 @@
+curl -XPUT http://172.16.10.22:9200/book_info
+curl -XPOST http://172.16.10.22:9200/book_info/book/_mapping -d'
+{
+    "book": {
+        "properties": {
+            "bookName": {
+                "analyzer": "ik",
+                "store": true,
+                "type": "string"
+            },
+            "bookPrice": {
+                "index": "not_analyzed",
+                "store": true,
+                "type": "string"
+            },
+            "bookID": {
+                "index": "not_analyzed",
+                "store": true,
+                "type": "string"
+            }
+        }
+    }
+}'
